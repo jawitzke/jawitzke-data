@@ -19,4 +19,4 @@ echo "$YEAR,$MONTH,$DAY,$CITY,$STATE,$INPUT_DATE,$UUID" >./tmp.csv
 #Read out the data in the CSV file
 cat tmp.csv
 #write data to database
-#bash ./write-to-db.sh
+bash ./write-to-db.sh
