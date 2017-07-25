@@ -15,8 +15,8 @@ INPUT_DATE=`date --iso-8601=seconds`
 #create unique identifier
 UUID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1)
 #write data to tmp.csv
-echo "$YEAR,$MONTH,$DAY,$CITY,$STATE,$INPUT_DATE,$UUID" >./tmp.csv
+echo "$UUID,$YEAR,$MONTH,$DAY,$CITY,$STATE,$INPUT_DATE" >./tmp.csv
 #Read out the data in the CSV file
 cat tmp.csv
 #write data to database
-bash ./$write-to-db.sh
+bash ./write-to-db.sh
