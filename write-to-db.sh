@@ -22,6 +22,7 @@ TABLE_CHECK=`mysql -u"$USER" -p"$PASSWORD" -e "show tables;" $DATABASE | grep -F
 if [ "$TABLE_CHECK" == "$TABLE" ]; then
    echo "Table does exists"
 else
+#create table with the proper sub titles and make ID the primary key
    echo "Table does not exist. Currently Making table..."
    mysql -u"$USER" -p"$PASSWORD" -e "CREATE TABLE $TABLE (ID VARCHAR(255), Year INT, Month INT, Day INT, City VARCHAR(255), State VARCHAR(255), Date TIMESTAMP); ALTER TABLE $TABLE ADD PRIMARY KEY (ID);" $DATABASE
 fi
@@ -34,3 +35,4 @@ echo "Survey data dumped to file `date --iso-8601`-$DATABASE.sql"
 mysqldump -u"$USER" -p"$PASSWORD" $DATABASE > `date --iso-8601`-$DATABASE.sql
 # removing data from mysql secure directory
 sudo rm /var/lib/mysql-files/tmp.csv
+echo "Thank you for participating in this data collection."
